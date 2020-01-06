@@ -8,7 +8,14 @@
  */
 
 import produce from 'immer';
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_REPOS_SUCCESS,
+  LOAD_REPOS,
+  LOAD_REPOS_ERROR,
+  LOAD_CLASSIFIER_SUCCESS,
+  LOAD_CLASSIFIER,
+  LOAD_CLASSIFIER_ERROR,
+} from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -18,6 +25,10 @@ export const initialState = {
   userData: {
     repositories: false,
   },
+  // TODO: separate state
+  classifierLoading: false,
+  classifierError: false,
+  classifierResult: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -39,6 +50,23 @@ const appReducer = (state = initialState, action) =>
       case LOAD_REPOS_ERROR:
         draft.error = action.error;
         draft.loading = false;
+        break;
+
+      // TODO: make new reducer for classifier
+      case LOAD_CLASSIFIER:
+        draft.classifierLoading = true;
+        draft.classifierError = false;
+        draft.classifierResult = false;
+        break;
+      case LOAD_CLASSIFIER_SUCCESS:
+        draft.classifierLoading = false;
+        draft.classifierError = false;
+        draft.classifierResult = action.response;
+        break;
+      case LOAD_CLASSIFIER_ERROR:
+        draft.classifierLoading = false;
+        draft.classifierError = true;
+        draft.classifierResult = false;
         break;
     }
   });

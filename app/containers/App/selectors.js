@@ -39,6 +39,25 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
+// TODO: should be classifierState.result
+const makeSelectClassifierLoading = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.classifierLoading,
+  );
+
+const makeSelectClassifierResult = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.classifierResult,
+  );
+
+const makeSelectClassifierError = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.classifierError,
+  );
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -46,4 +65,7 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
+  makeSelectClassifierLoading,
+  makeSelectClassifierResult,
+  makeSelectClassifierError,
 };

@@ -9,6 +9,13 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
+/* REPO */
 export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
 export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+
+/* CLASSIFIER */
+export const LOAD_CLASSIFIER = 'boilerplate/App/LOAD_CLASSIFIER';
+export const LOAD_CLASSIFIER_SUCCESS =
+  'boilerplate/App/LOAD_CLASSIFIER_SUCCESS';
+export const LOAD_CLASSIFIER_ERROR = 'boilerplate/App/LOAD_CLASSIFIER_ERROR';

@@ -15,7 +15,14 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import {
+  LOAD_REPOS,
+  LOAD_REPOS_SUCCESS,
+  LOAD_REPOS_ERROR,
+  LOAD_CLASSIFIER_SUCCESS,
+  LOAD_CLASSIFIER,
+  LOAD_CLASSIFIER_ERROR,
+} from './constants';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -54,6 +61,50 @@ export function reposLoaded(repos, username) {
 export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
+    error,
+  };
+}
+
+/* CLASSIFIERS - TODO: MOVE TO OWN FILE */
+
+/**
+ * Load the classifier to server, this action starts the request saga
+ *
+ * @return {object} An action object with a type of LOAD_CLASSIFIER
+ */
+export function loadClassification(file) {
+  return {
+    type: LOAD_CLASSIFIER,
+    file,
+  };
+}
+
+/**
+ * Dispatched when the classifierResult is loaded by the request saga
+ *
+ * @param  {array} classifierResult The classifier result
+ * @param  {string} filename The current filename
+ *
+ * @return {object}      An action object with a type of LOAD_CLASSIFIER_SUCCESS result
+ */
+export function classifierLoaded(classifierResult, filename) {
+  return {
+    type: LOAD_CLASSIFIER_SUCCESS,
+    classifierResult,
+    filename,
+  };
+}
+
+/**
+ * Dispatched when loading the classifier result fails
+ *
+ * @param  {object} error The error
+ *
+ * @return {object}       An action object with a type of LOAD_CLASSIFIER_ERROR passing the error
+ */
+export function classifierLoadingError(error) {
+  return {
+    type: LOAD_CLASSIFIER_ERROR,
     error,
   };
 }
